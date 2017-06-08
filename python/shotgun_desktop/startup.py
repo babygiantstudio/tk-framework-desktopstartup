@@ -404,11 +404,9 @@ def __launch_app(app, splash, user, app_bootstrap, settings):
     # We're about to bootstrap, so remove sgtk from our scope so that if we add
     # code that uses it after the bootstrap we have to import the
     # new core.
+
     del sgtk
-    if toolkit_classic_required:
-        engine = __start_engine_in_toolkit_classic(app, splash, user, pc, pc_path)
-    else:
-        engine = __start_engine_in_zero_config(app, app_bootstrap, splash, user)
+    engine = __start_engine_in_zero_config(app, app_bootstrap, splash, user)
 
     return __post_bootstrap_engine(splash, app_bootstrap, engine, settings)
 
